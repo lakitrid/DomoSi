@@ -1,0 +1,5 @@
+﻿1;Gestion de la Teleinfo;TeleInfo
+2;Récupération température Oregon;Oregon
+3;Récupération température 1Wire;DS18B20
+4;Pilotage Radiateurs;Radiateur
+5;Pilotage Prise;PrisePilote
