@@ -1,0 +1,2 @@
+﻿PC 1 : Update-Database -Verbose -ConnectionString "Data Source=(LocalDb)\v11.0;AttachDbFilename=C:\Projects\DomoSI\Data\DomoDb.mdf;Initial Catalog=DomoDb;Integrated Security=True" -ConnectionProviderName "System.Data.SqlClient"
+PC 2 : 

@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoRest", "DomoRest\DomoRest.csproj", "{626D701F-FFDF-4FC5-AF0D-313DC8FE2EAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoDb", "DomoDb\DomoDb.csproj", "{753A2C0B-25A8-41B1-9A83-3DFEFC013822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoCore", "DomoCore\DomoCore.csproj", "{C6BDC9B1-7403-47F1-896F-AC59693EE703}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{626D701F-FFDF-4FC5-AF0D-313DC8FE2EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{626D701F-FFDF-4FC5-AF0D-313DC8FE2EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{626D701F-FFDF-4FC5-AF0D-313DC8FE2EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753A2C0B-25A8-41B1-9A83-3DFEFC013822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753A2C0B-25A8-41B1-9A83-3DFEFC013822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753A2C0B-25A8-41B1-9A83-3DFEFC013822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753A2C0B-25A8-41B1-9A83-3DFEFC013822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BDC9B1-7403-47F1-896F-AC59693EE703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BDC9B1-7403-47F1-896F-AC59693EE703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BDC9B1-7403-47F1-896F-AC59693EE703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BDC9B1-7403-47F1-896F-AC59693EE703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
