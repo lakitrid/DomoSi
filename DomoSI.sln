@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoCore", "DomoCore\DomoCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoHard", "DomoHard\DomoHard.csproj", "{0AEAC02D-7A16-4E40-B375-7E66A95E355B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoDataServ", "DomoDataServ\DomoDataServ.csproj", "{7D7521FA-4581-4FB4-A595-B1A6A2B41941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoDataServTest", "DomoDataServTest\DomoDataServTest.csproj", "{667CA97F-ADBA-46AA-847A-F4C2912953AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{0AEAC02D-7A16-4E40-B375-7E66A95E355B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEAC02D-7A16-4E40-B375-7E66A95E355B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AEAC02D-7A16-4E40-B375-7E66A95E355B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D7521FA-4581-4FB4-A595-B1A6A2B41941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D7521FA-4581-4FB4-A595-B1A6A2B41941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D7521FA-4581-4FB4-A595-B1A6A2B41941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D7521FA-4581-4FB4-A595-B1A6A2B41941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667CA97F-ADBA-46AA-847A-F4C2912953AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667CA97F-ADBA-46AA-847A-F4C2912953AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667CA97F-ADBA-46AA-847A-F4C2912953AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667CA97F-ADBA-46AA-847A-F4C2912953AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
