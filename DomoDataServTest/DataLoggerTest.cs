@@ -12,11 +12,12 @@ namespace DomoDataServTest
         public void AddDataTest()
         {
             DateTime date = DateTime.UtcNow;
+            DataLogger logger = new DataLogger("mongodb://WHS", "Test");
 
             DataLog data = new DataLog() { Type = "TestData", Date = date, JsonData = "{ TestValue = Test}" };
-            DataLog dataGet = DataLogger.Instance.AddData(data);
+            DataLog dataGet = logger.AddData(data);
 
-            List<DataLog> logs = DataLogger.Instance.GetData("TestData", null, null);
+            List<DataLog> logs = logger.GetData("TestData", null, null);
             Assert.IsNotNull(logs);
             Assert.IsTrue(logs.Count > 0);
         }
@@ -24,7 +25,8 @@ namespace DomoDataServTest
         [TestCleanup]
         public void CleanUp()
         {
-            DataLogger.Instance.RemoveAll("TestData");
+            DataLogger logger = new DataLogger("mongodb://WHS", "Test");
+            logger.RemoveAll("TestData");
         }
     }
 }

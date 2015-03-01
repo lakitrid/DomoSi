@@ -8,22 +8,23 @@ using MongoDB.Driver.Builders;
 
 namespace DomoDataServ
 {
-    public sealed class DataLogger
+    public sealed class DataLogger : IDisposable
     {
-        private static readonly DataLogger instanceValue = new DataLogger();
-
-        private readonly string connectionstring = "mongodb://WHS";
+        private readonly string connectionString;
+        private readonly string dbName;
 
         private MongoDatabase database;
+        private MongoClient client;
+        private MongoServer server;
 
-        private DataLogger()
+        public DataLogger(string connectionString, string dbName)
         {
-            var client = new MongoClient(this.connectionstring);
-            var server = client.GetServer();
-            this.database = server.GetDatabase("test");
+            this.connectionString = connectionString;
+            this.dbName = dbName;
+            this.client = new MongoClient(this.connectionString);
+            this.server = client.GetServer();
+            this.database = server.GetDatabase(dbName);
         }
-
-        public static DataLogger Instance { get { return instanceValue; } }
 
         public DataLog AddData(DataLog data)
         {
@@ -53,6 +54,11 @@ namespace DomoDataServ
             
             var query = Query<DataLog>.EQ(e => e.Type, type);
             collection.Remove(query);
+        }
+
+        public void Dispose()
+        {
+            this.server.Disconnect();
         }
     }
 }
