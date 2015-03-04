@@ -9,3 +9,7 @@ Le système à une architecture cible un peu atypique :
 - Système de collecte des données sur un BeagleBone Black sous debian : système d'échange utilisant un service REST Mono,
 Contrôle matèriel soit en C ou en utilisant des librairies Python
 - Récupération des données physique soit directement sur le BeagleBone soit en passant par des Arduino déportés communiquant soit sur port série, soit en utilisant des NRF24L01
+ 
+
+Third Party software used :
+- Oregon decoding on Arduino : http://connectingstuff.net/blog/decodage-protocole-oregon-arduino-1/
