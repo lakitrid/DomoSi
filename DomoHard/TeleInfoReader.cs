@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using DomoHard.Data;
+using System.IO;
 
 namespace DomoHard
 {
@@ -26,8 +27,6 @@ namespace DomoHard
         {
             this.serialPortName = serialPortName;
             this.baudrate = baudrate;
-
-            this.InitSerial();
         }
 
         public void Dispose()
@@ -38,11 +37,20 @@ namespace DomoHard
         /// <summary>
         /// Initialize serial port reading and subscribe to reading event
         /// </summary>
-        private void InitSerial()
+        /// <returns>Whether the serial port is Open</returns>
+        public bool InitSerial()
         {
-            this.serialPort = new SerialPort(this.serialPortName, this.baudrate, Parity.Even, 7, StopBits.One);
-            this.serialPort.Open();
-            this.serialPort.DataReceived += this.DataReceived;
+            try
+            {
+                this.serialPort = new SerialPort(this.serialPortName, this.baudrate, Parity.Even, 7, StopBits.One);
+                this.serialPort.Open();
+                this.serialPort.DataReceived += this.DataReceived;
+                return this.serialPort.IsOpen;
+            }
+            catch (IOException exc)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -65,9 +73,32 @@ namespace DomoHard
             catch { }
         }
 
+        /// <summary>
+        /// Decode TeleInfo Data Sample frame :
+        /// Start with STX (0x02)
+        /// Serial number :  ADCO SerialNumber C
+        /// Type of billing : OPTARIF HC.. <
+        /// Level of power : ISOUSC 30 9
+        /// Low Hour (in WH) : HCHC 034172198 )
+        /// Peek Hour (IN WH) : HCHP 036245714 3
+        /// current period : PTEC HP..  
+        /// Instant intensity (in A) : IINST 003 Z
+        /// Max intensoty (in A) : IMAX 029 J
+        /// Apparent Power (in VA) : PAPP 00820 +
+        /// Warning over intensity ( in A) : ADPS
+        /// HHPHC A ,
+        /// MOTDETAT 000000 B
+        /// End with ETX (0x03)
+        /// 
+        /// for each variable, start with LF, end with CR
+        /// </summary>
+        /// <param name="raw">raw Data</param>
+        /// <returns></returns>
         private TeleInfoData DecodeData(string raw)
         {
             TeleInfoData data = new TeleInfoData();
+
+
 
             return data;
         }

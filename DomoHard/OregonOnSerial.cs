@@ -6,6 +6,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using DomoHard.Data;
+using System.IO;
 
 namespace DomoHard
 {
@@ -28,8 +29,6 @@ namespace DomoHard
         {
             this.serialPortName = serialPortName;
             this.baudrate = baudrate;
-
-            this.InitSerial();
         }
 
         public void Dispose()
@@ -40,11 +39,20 @@ namespace DomoHard
         /// <summary>
         /// Initialize serial port reading and subscribe to reading event
         /// </summary>
-        private void InitSerial()
+        /// <returns>Whether the serial port is Open</returns>
+        public bool InitSerial()
         {
-            this.serialPort = new SerialPort(this.serialPortName, this.baudrate);
-            this.serialPort.Open();
-            this.serialPort.DataReceived += this.DataReceived;
+            try
+            {
+                this.serialPort = new SerialPort(this.serialPortName, this.baudrate);
+                this.serialPort.Open();
+                this.serialPort.DataReceived += this.DataReceived;
+                return this.serialPort.IsOpen;
+            }
+            catch (IOException exc)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -89,7 +97,7 @@ namespace DomoHard
             foreach (string set in rawSplit)
             {
                 string[] setData = set.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                if(setData.Length == 2)
+                if (setData.Length == 2)
                 {
                     switch (setData[0])
                     {
@@ -98,7 +106,7 @@ namespace DomoHard
                             break;
                         case "C":
                             int channel = 0;
-                            if(int.TryParse(setData[1], out channel))
+                            if (int.TryParse(setData[1], out channel))
                             {
                                 data.Channel = channel;
                             }
@@ -129,7 +137,7 @@ namespace DomoHard
                 }
             }
 
-            if(!isOk || !data.IsValid())
+            if (!isOk || !data.IsValid())
             {
                 return null;
             }
