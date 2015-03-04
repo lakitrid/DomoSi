@@ -20,31 +20,31 @@ namespace DomoHard
         private string serialPortName;
         private int baudrate;
         private SerialPort serialPort;
-        private BackgroundWorker worker;
 
         public delegate void OregonDataReadHandler(OregonData data);
         public event OregonDataReadHandler OregonDataRead;
+
         public OregonOnSerial(string serialPortName, int baudrate)
         {
             this.serialPortName = serialPortName;
             this.baudrate = baudrate;
 
-            this.StartReadingThread();
-        }
-
-        /// <summary>
-        /// Initialize serial port reading and subscribe to reading event
-        /// </summary>
-        public void StartReadingThread()
-        {
-            this.serialPort = new SerialPort(this.serialPortName, this.baudrate);
-            this.serialPort.Open();
-            this.serialPort.DataReceived += this.DataReceived;
+            this.InitSerial();
         }
 
         public void Dispose()
         {
             this.serialPort.Close();
+        }
+
+        /// <summary>
+        /// Initialize serial port reading and subscribe to reading event
+        /// </summary>
+        private void InitSerial()
+        {
+            this.serialPort = new SerialPort(this.serialPortName, this.baudrate);
+            this.serialPort.Open();
+            this.serialPort.DataReceived += this.DataReceived;
         }
 
         /// <summary>
