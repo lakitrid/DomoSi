@@ -4,69 +4,72 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using DomoHard.Data;
 
 namespace DomoHard
 {
-    public class TeleInfoReader
+    /// <summary>
+    /// TeleInfo Reader on Serial port
+    /// 
+    /// Used with direct wiring with a component SFH620A-2
+    /// </summary>
+    public class TeleInfoReader : IDisposable
     {
-        public void Read()
+        private string serialPortName;
+        private int baudrate = 1200;
+        private SerialPort serialPort;
+
+        public delegate void TeleInfoDataReadHandler(TeleInfoData data);
+        public event TeleInfoDataReadHandler TeleInfoDataRead;
+
+        public TeleInfoReader(string serialPortName, int baudrate = 1200)
         {
-            string filename = string.Empty;
-            int baudrate = 1200;
+            this.serialPortName = serialPortName;
+            this.baudrate = baudrate;
 
-            filename = "out.log";
+            this.InitSerial();
+        }
 
-            SerialPort serial = null;
+        public void Dispose()
+        {
+            this.serialPort.Close();
+        }
+
+        /// <summary>
+        /// Initialize serial port reading and subscribe to reading event
+        /// </summary>
+        private void InitSerial()
+        {
+            this.serialPort = new SerialPort(this.serialPortName, this.baudrate, Parity.Even, 7, StopBits.One);
+            this.serialPort.Open();
+            this.serialPort.DataReceived += this.DataReceived;
+        }
+
+        /// <summary>
+        /// Event handler for receiving serial data
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event parameters</param>
+        private void DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
             try
             {
-                serial = new SerialPort(filename, baudrate, Parity.Even, 7, StopBits.One);
-                serial.Open();
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine(string.Format("Open Failed ! {0}", exc.Message));
-                return;
-            }
+                // We are reading line by line
+                TeleInfoData data = this.DecodeData(this.serialPort.ReadExisting());
 
-
-            Console.WriteLine(string.Empty);
-
-            try
-            {
-                while (true)
+                if (TeleInfoDataRead != null && data != null)
                 {
-                    if (serial.BytesToRead > 0)
-                    {
-                        int byteCount = serial.BytesToRead;
-                        byte[] buffer = new byte[byteCount];
-
-                        serial.Read(buffer, 0, byteCount);
-
-                        //if (byteCount >= 16)
-                        //{
-                        //Console.WriteLine(string.Format("Read {0} bytes : ", byteCount));
-
-                        //foreach (byte data in buffer)
-                        //{
-                        //    Console.Write(data.ToString("X2"));
-                        //}
-
-                        //Console.WriteLine(string.Empty);
-                        foreach (byte data in buffer)
-                        {
-                            Console.Write((char)data);
-                        }
-                        //}
-                    }
-
-                    Thread.Sleep(500);
+                    TeleInfoDataRead.Invoke(data);
                 }
             }
-            catch (Exception exc)
-            {
-                Console.WriteLine(string.Format("Failure while reading ! {0}", exc.Message));
-                return;
-            }
+            catch { }
+        }
+
+        private TeleInfoData DecodeData(string raw)
+        {
+            TeleInfoData data = new TeleInfoData();
+
+            return data;
         }
     }
 }
