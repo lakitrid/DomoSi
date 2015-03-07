@@ -53,7 +53,15 @@ namespace DomoHard
 
             if (this.InitSerial())
             {
-                this.ReadData();
+                try
+                {
+                    this.ReadData();
+                }
+                catch
+                {
+                    Console.WriteLine("TeleInfoReader Problem While Reading on Serial port");
+                }
+
                 this.CloseSerial();
             }
 
