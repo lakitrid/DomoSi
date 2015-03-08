@@ -1,14 +1,20 @@
 DomoSi
 ======
 
-Briques de base pour un système domotique sur mesure
+Home Appliance project in c#.
 
-Le système à une architecture cible un peu atypique :
-- Système de supervision général sur un serveur Windows avec une base de données fichier.
-- Site Web de contrôle / consultation sur ce même serveur Windows
-- Système de collecte des données sur un BeagleBone Black sous debian : système d'échange utilisant un service REST Mono,
-Contrôle matèriel soit en C ou en utilisant des librairies Python
-- Récupération des données physique soit directement sur le BeagleBone soit en passant par des Arduino déportés communiquant soit sur port série, soit en utilisant des NRF24L01
+The system will have the following elements :
+- a data collecting core on a BeagleBone Black (Debian - Mono)
+- a control system on Windows Server
+- a frontend using AngularJs and REST services in C#
+- a MongoDB for storing DataSamples
+
+The target is to have the following hardware elements :
+- TeleInfo reading (French power meter information)
+- Temperature reading from Oregon Scientific sensor, using an arduino as RF receiver.
+- Temperature reading over 1Wire bus
+- Control of Home heaters using relays to produce control signal
+- Wireless control of a power outlet using NRF24L01 as communication device between the BeagleBone and an Arduino
  
 
 Third Party software used :
