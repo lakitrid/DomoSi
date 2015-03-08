@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoHard", "DomoHard\DomoHa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoHardServ", "DomoHardServ\DomoHardServ.csproj", "{E1752986-A9F8-42EA-BE28-6F7598739F24}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArduinoSketches", "ArduinoSketches", "{E851DD10-020D-4197-93A4-81BAEF6BDF0A}"
+	ProjectSection(SolutionItems) = preProject
+		ArduinoSketches\ReceptionOregon.ino = ArduinoSketches\ReceptionOregon.ino
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
