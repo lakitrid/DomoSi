@@ -231,28 +231,28 @@ void reportSerial (const char* s, class DecodeOOK& decoder) {
     // Outside/Water Temp : THN132N,...
     if(data[0] == 0xEA && data[1] == 0x4C)
     {
-       Serial.print("[THN132N,...] Id:");
+       Serial.print("I:");
        Serial.print(data[3], HEX);
-       Serial.print(" ,Channel:");
+       Serial.print(";C:");
        Serial.print(channel(data));
-       Serial.print(" ,temp:");
+       Serial.print(";T:");
        Serial.print(temperature(data));
-       Serial.print(" ,bat:");
+       Serial.print(";B:");
        Serial.print(battery(data));
        Serial.println();
     }
     // Inside Temp-Hygro : THGR228N,...
     else if(data[0] == 0x1A && data[1] == 0x2D)
     {
-       Serial.print("[THGR228N,...] Id:");
+       Serial.print("I:");
        Serial.print(data[3], HEX);
-       Serial.print(" ,Channel:");
+       Serial.print(";C:");
        Serial.print(channel(data));
-       Serial.print(" ,temp:");
+       Serial.print(";T:");
        Serial.print(temperature(data));
-       Serial.print(" ,hum:");
+       Serial.print(";H:");
        Serial.print(humidity(data));
-       Serial.print(" ,bat:");
+       Serial.print(";B:");
        Serial.print(battery(data));
        Serial.println();
     }
