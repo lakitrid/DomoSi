@@ -50,12 +50,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SensorWatcher.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomoDataServ\DomoDataServ.csproj">
-      <Project>{7d7521fa-4581-4fb4-a595-b1a6a2b41941}</Project>
-      <Name>DomoDataServ</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DomoHard\DomoHard.csproj">
       <Project>{0aeac02d-7a16-4e40-b375-7e66a95e355b}</Project>
       <Name>DomoHard</Name>

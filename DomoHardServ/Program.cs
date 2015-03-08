@@ -1,4 +1,4 @@
-﻿using DomoDataServ;
+﻿using DomoHard;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,15 +11,22 @@ namespace DomoHardServ
     {
         public static void Main(string[] args)
         {
-            string mongoConnectionString = ConfigurationManager.AppSettings["mongoConnectionString"];
-            string mongoDbName = ConfigurationManager.AppSettings["mongoDbName"];
-            string teleInfoPort = ConfigurationManager.AppSettings["TeleInfoPort"];
+            //string mongoConnectionString = ConfigurationManager.AppSettings["mongoConnectionString"];
+            //string mongoDbName = ConfigurationManager.AppSettings["mongoDbName"];
+            //string teleInfoPort = ConfigurationManager.AppSettings["TeleInfoPort"];
 
-            DataLogger logger = new DataLogger(mongoConnectionString, mongoDbName);
+            Console.WriteLine("Start Server");
+            SensorWatcher watcher = new SensorWatcher();
 
-            logger.AddData(new DataLog() { Date = DateTime.Now, Type = "Log", JsonData = "{ Message = 'Application Start' }" });
             Console.ReadLine();
-            logger.AddData(new DataLog() { Date = DateTime.Now, Type = "Log", JsonData = "{ Message = 'Application Close' }" });
+            watcher.Dispose();
+            Console.WriteLine("Stop Server");
+
+        //    DataLogger logger = new DataLogger(mongoConnectionString, mongoDbName);
+
+        //    logger.AddData(new DataLog() { Date = DateTime.Now, Type = "Log", JsonData = "{ Message = 'Application Start' }" });
+        //    Console.ReadLine();
+        //    logger.AddData(new DataLog() { Date = DateTime.Now, Type = "Log", JsonData = "{ Message = 'Application Close' }" });
         }
     }
 }
