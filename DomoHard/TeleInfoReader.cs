@@ -50,6 +50,7 @@ namespace DomoHard
         private void SerialReadCallback(object state)
         {
             Console.WriteLine("Start TeleInfoReader SerialReadCallback");
+            this.timer.Change(TimeSpan.FromMinutes(1), TimeSpan.Zero);
 
             if (this.InitSerial())
             {
@@ -64,8 +65,6 @@ namespace DomoHard
 
                 this.CloseSerial();
             }
-
-            this.timer.Change(TimeSpan.FromMinutes(1), TimeSpan.Zero);
 
             Console.WriteLine("Stop TeleInfoReader SerialReadCallback");
         }

@@ -11,22 +11,12 @@ namespace DomoHardServ
     {
         public static void Main(string[] args)
         {
-            //string mongoConnectionString = ConfigurationManager.AppSettings["mongoConnectionString"];
-            //string mongoDbName = ConfigurationManager.AppSettings["mongoDbName"];
-            //string teleInfoPort = ConfigurationManager.AppSettings["TeleInfoPort"];
-
-            Console.WriteLine("Start Server");
+            Console.WriteLine("Start DomoHard Server");
             SensorWatcher watcher = new SensorWatcher();
 
             Console.ReadLine();
             watcher.Dispose();
-            Console.WriteLine("Stop Server");
-
-        //    DataLogger logger = new DataLogger(mongoConnectionString, mongoDbName);
-
-        //    logger.AddData(new DataLog() { Date = DateTime.Now, Type = "Log", JsonData = "{ Message = 'Application Start' }" });
-        //    Console.ReadLine();
-        //    logger.AddData(new DataLog() { Date = DateTime.Now, Type = "Log", JsonData = "{ Message = 'Application Close' }" });
+            Console.WriteLine("Stop DomoHard Server");
         }
     }
 }

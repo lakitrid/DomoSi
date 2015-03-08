@@ -63,12 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomoDataServ\DomoDataServ.csproj">
-      <Project>{7d7521fa-4581-4fb4-a595-b1a6a2b41941}</Project>
-      <Name>DomoDataServ</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

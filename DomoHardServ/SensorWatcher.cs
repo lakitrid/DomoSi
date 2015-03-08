@@ -16,12 +16,20 @@ namespace DomoHardServ
     internal class SensorWatcher : IDisposable
     {
         private Thread sensorThread;
-        private TeleInfoReader reader;
         private AutoResetEvent waiter = new AutoResetEvent(false);
         private bool running = true;
 
+        private readonly string mongoConnectionString;
+        private readonly string mongoDbName;
+
+        private TeleInfoReader teleInfoReader;
+        private SaveData<TeleInfoData> teleInfoSave;
+
         public SensorWatcher()
         {
+            this.mongoConnectionString = ConfigurationManager.AppSettings["mongoConnectionString"];
+            this.mongoDbName = ConfigurationManager.AppSettings["mongoDbName"];
+
             ThreadStart start = new ThreadStart(this.WatchSensor);
             this.sensorThread = new Thread(start);
             this.sensorThread.Start();
@@ -64,8 +72,9 @@ namespace DomoHardServ
         /// </summary>
         private void InitSensorWatch()
         {
-            this.reader = new TeleInfoReader(ConfigurationManager.AppSettings["TeleInfoPort"]);
-            reader.TeleInfoDataRead += TeleInfoDataRead;
+            this.teleInfoReader = new TeleInfoReader(ConfigurationManager.AppSettings["TeleInfoPort"]);
+            this.teleInfoReader.TeleInfoDataRead += TeleInfoDataRead;
+            this.teleInfoSave = new SaveData<TeleInfoData>(this.mongoConnectionString, this.mongoDbName);
         }
 
         /// <summary>
@@ -73,7 +82,8 @@ namespace DomoHardServ
         /// </summary>
         private void DisposeSensors()
         {
-            this.reader.Dispose();
+            this.teleInfoReader.Dispose();
+            this.teleInfoSave.Dispose();
         }
 
         /// <summary>
@@ -83,6 +93,7 @@ namespace DomoHardServ
         private void TeleInfoDataRead(TeleInfoData data)
         {
             waiter.Set();
+            this.teleInfoSave.AddData(data);
             Console.WriteLine("Date : {2}, HP : {0}, HC : {1}", data.PeekHourCpt, data.LowHourCpt, data.Date.ToShortTimeString());
         }
     }

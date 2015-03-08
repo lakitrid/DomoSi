@@ -5,9 +5,14 @@ using System.Text;
 
 namespace DomoHard.Data
 {
-    public class OregonData
+    public class OregonData : SensorData
     {
-        public string Id { get; set; }
+        public OregonData()
+        {
+            this.Type = "OregonData";
+        }
+
+        public string SensorId { get; set; }
 
         public DateTime Date { get; set; }
 

@@ -8,8 +8,13 @@ namespace DomoHard.Data
     /// <summary>
     /// TeleInfo Data
     /// </summary>
-    public class TeleInfoData
+    public class TeleInfoData : SensorData
     {
+        public TeleInfoData()
+        {
+            this.Type = "TeleInfoData";
+        }
+
         /// <summary>
         /// Meter Id
         /// </summary>

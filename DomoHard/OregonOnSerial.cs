@@ -49,7 +49,7 @@ namespace DomoHard
                 this.serialPort.DataReceived += this.DataReceived;
                 return this.serialPort.IsOpen;
             }
-            catch (IOException exc)
+            catch
             {
                 return false;
             }
@@ -102,7 +102,7 @@ namespace DomoHard
                     switch (setData[0])
                     {
                         case "I":
-                            data.Id = setData[1];
+                            data.SensorId = setData[1];
                             break;
                         case "C":
                             int channel = 0;
