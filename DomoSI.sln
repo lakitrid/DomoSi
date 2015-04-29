@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArduinoSketches", "ArduinoS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoWeb", "DomoWeb\DomoWeb.csproj", "{8FD7CEF2-3579-4967-A074-88B966E280F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomoService", "DomoService\DomoService.csproj", "{DFEDB89D-DA43-4D4F-92F3-E78147A40E2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{8FD7CEF2-3579-4967-A074-88B966E280F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FD7CEF2-3579-4967-A074-88B966E280F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FD7CEF2-3579-4967-A074-88B966E280F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEDB89D-DA43-4D4F-92F3-E78147A40E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEDB89D-DA43-4D4F-92F3-E78147A40E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEDB89D-DA43-4D4F-92F3-E78147A40E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEDB89D-DA43-4D4F-92F3-E78147A40E2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

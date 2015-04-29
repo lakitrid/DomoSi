@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace DomoHard.Data
         {
             this.Type = "TeleInfoData";
         }
+
+        public ObjectId Id { get; set; }
 
         /// <summary>
         /// Meter Id

@@ -11,7 +11,8 @@
                 "ngResource",
                 "ui.bootstrap",
                 "ui.router",
-                "ngCookies"
+                "ngCookies",
+                "RDash"
             ]);
             this.app.config(["$routeProvider", ($routeProvider: ng.route.IRouteProvider) => {
                 $routeProvider
@@ -19,7 +20,8 @@
                     .otherwise({ redirectTo: "/" });
             }]);
             this.app.controller("HomeController", ["$scope", "$cookieStore", ($scope: Scope.IHomeScope, $cookieStore: angular.cookies.ICookieStoreService) => new App.Controllers.HomeController($scope, $cookieStore)]);
-            this.app.controller("DashboardController", ["$scope", ($scope: Scope.IDashboardScope) => new App.Controllers.DashboardController($scope)]);
+            this.app.controller("DashboardController", ["$scope", "$http", ($scope: Scope.IDashboardScope, $http: angular.IHttpService) => new App.Controllers.DashboardController($scope, $http)]);
+            this.app.controller("AlertController", ["$scope", ($scope: Scope.IAlertScope) => new App.Controllers.AlertController($scope)]);
         }
 
         public start() {

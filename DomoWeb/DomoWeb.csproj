@@ -164,7 +164,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\EnergyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="angular-highcharts-demo.html" />
+    <Content Include="app\views\test.html" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -218,6 +219,7 @@
     <Content Include="fonts\montserrat-regular-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
+    <Content Include="Images\avatar.jpg" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1067,6 +1069,12 @@
     <Content Include="Content\rdash\css\rdash.min.css" />
     <Content Include="Content\rdash\fonts\montserrat-regular-webfont.svg" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\rdash\directives\loading.js" />
+    <Content Include="Scripts\rdash\directives\widget-body.js" />
+    <Content Include="Scripts\rdash\directives\widget-footer.js" />
+    <Content Include="Scripts\rdash\directives\widget-header.js" />
+    <Content Include="Scripts\rdash\directives\widget.js" />
+    <Content Include="Scripts\rdash\module.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1108,10 +1116,15 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\AppBuilder.ts" />
+    <TypeScriptCompile Include="app\controller\alertController.ts" />
     <TypeScriptCompile Include="app\controller\dashboardController.ts" />
     <TypeScriptCompile Include="app\controller\homeController.ts" />
+    <TypeScriptCompile Include="app\Domain\EnergyIndex.ts" />
+    <TypeScriptCompile Include="app\scope\Alert.ts" />
+    <TypeScriptCompile Include="app\scope\AlertScope.ts" />
     <TypeScriptCompile Include="app\scope\DashboardScope.ts" />
     <TypeScriptCompile Include="app\scope\HomeScope.ts" />
+    <TypeScriptCompile Include="app\scope\IAlertScope.ts" />
     <TypeScriptCompile Include="app\scope\IDashboardScope.ts" />
     <TypeScriptCompile Include="app\scope\IHomeScope.ts" />
     <TypeScriptCompile Include="app\start.ts" />
@@ -1125,6 +1138,12 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\highcharts\highcharts.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomoService\DomoService.csproj">
+      <Project>{dfedb89d-da43-4d4f-92f3-e78147a40e2c}</Project>
+      <Name>DomoService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

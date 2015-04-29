@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div id="page-wrapper" ng-class="{'open': home.toggle}" ng-cloak>
+<div id="page-wrapper" ng-class="{'open': home.toggle}" lang="fr" ng-cloak>
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar">
@@ -14,26 +14,18 @@
             </li>
             <li class="sidebar-title"><span>NAVIGATION</span></li>
             <li class="sidebar-list">
-                <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
-            </li>
-            <li class="sidebar-list">
-                <a href="#/tables">Tables <span class="menu-icon fa fa-table"></span></a>
+                <a href="#/">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
             </li>
         </ul>
         <div class="sidebar-footer">
-            <div class="col-xs-4">
-                <a href="https://github.com/rdash/rdash-angular" target="_blank">
+            <div class="col-xs-6">
+                <a href="https://github.com/lakitrid/DomoSi" target="_blank">
                     Github
                 </a>
             </div>
-            <div class="col-xs-4">
-                <a href="https://github.com/rdash/rdash-angular/README.md" target="_blank">
+            <div class="col-xs-6">
+                <a href="https://github.com/lakitrid/DomoSi/blob/master/README.md" target="_blank">
                     About
-                </a>
-            </div>
-            <div class="col-xs-4">
-                <a href="#">
-                    Support
                 </a>
             </div>
         </div>
@@ -44,53 +36,6 @@
             <!-- Header Bar -->
             <div class="row header">
                 <div class="col-xs-12">
-                    <div class="user pull-right">
-                        <div class="item dropdown">
-                            <a href="#" class="dropdown-toggle">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-header">
-                                    Joe Bloggs
-                                </li>
-                                <li class="divider"></li>
-                                <li class="link">
-                                    <a href="#">
-                                        Profile
-                                    </a>
-                                </li>
-                                <li class="link">
-                                    <a href="#">
-                                        Menu Item
-                                    </a>
-                                </li>
-                                <li class="link">
-                                    <a href="#">
-                                        Menu Item
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="link">
-                                    <a href="#">
-                                        Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="item dropdown">
-                            <a href="#" class="dropdown-toggle">
-                                <i class="fa fa-bell-o"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-header">
-                                    Notifications
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">Server Down!</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="meta">
                         <div class="page">
                             Dashboard
@@ -103,7 +48,14 @@
             </div>
             <!-- End Header Bar -->
             <!-- Main Content -->
-            <div ng-view></div>
+            <div>
+                <div class="row alerts-container" data-ng-controller="AlertController" data-ng-show="alert.alerts.length">
+                    <div class="col-xs-12">
+                        <alert data-ng-repeat="alertToDisp in alert.alerts" type="{{alertToDisp.type}}" close="alert.closeAlert($index)">{{alertToDisp.msg}}</alert>
+                    </div>
+                </div>
+                <div ng-view></div>
+            </div>
         </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->
 </div><!-- End Page Wrapper -->

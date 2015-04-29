@@ -15,9 +15,16 @@ namespace DomoWeb
                         "~/Scripts/angular-route.js",
                         "~/Scripts/angular-sanitize.js",
                         "~/Scripts/angular-resource.js",
+                        "~/Scripts/bootstrap.js",
                         "~/Scripts/angular-ui/ui-bootstrap.js",
                         "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
-                        "~/Scripts/angular-ui-router.js"
+                        "~/Scripts/angular-ui-router.js",
+                        "~/Scripts/rdash/module.js",
+                        "~/Scripts/rdash/directives/loading.js",
+                        "~/Scripts/rdash/directives/widget-body.js",
+                        "~/Scripts/rdash/directives/widget-footer.js",
+                        "~/Scripts/rdash/directives/widget-header.js",
+                        "~/Scripts/rdash/directives/widget.js"
                 )); 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
