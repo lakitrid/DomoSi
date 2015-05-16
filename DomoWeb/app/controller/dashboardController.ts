@@ -9,13 +9,24 @@
                 this.$scope.dashboard = new Scope.DashboardScope();
             }
 
+            this.$scope.dashboard.refresh = setInterval(
+                () => {
+                    this.$scope.$apply(() => {
+                        this.getIndex();
+                    });
+                },
+                30000,
+                0);
+            this.$scope.$on("$destroy",() => { clearInterval(this.$scope.dashboard.refresh); });
+
             this.getIndex();
         }
 
         getIndex() {
-            this.$http.get("api/energy").success((data : Domain.EnergyIndex) => {
+            this.$http.get("api/energy").success((data: Domain.EnergyIndex) => {
                 this.$scope.dashboard.peekHourIndex = data.PeekHours;
                 this.$scope.dashboard.lowHourIndex = data.LowHours;
+
             });
         }
     }
