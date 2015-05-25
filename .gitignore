@@ -181,3 +181,19 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+*.map
+/DomoWeb/app/controller/alertController.js
+/DomoWeb/app/controller/dashboardController.js
+/DomoWeb/app/controller/homeController.js
+/DomoWeb/app/Domain/EnergyIndex.js
+/DomoWeb/app/scope/Alert.js
+/DomoWeb/app/scope/AlertScope.js
+/DomoWeb/app/scope/DashboardScope.js
+/DomoWeb/app/scope/HomeScope.js
+/DomoWeb/app/scope/IAlertScope.js
+/DomoWeb/app/scope/IDashboardScope.js
+/DomoWeb/app/scope/IHomeScope.js
+/DomoWeb/app/app.js
+/DomoWeb/app/AppBuilder.js
+/DomoWeb/app/start.js
+/DomoWeb/whs/Documents/DeployWHS
