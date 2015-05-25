@@ -23,10 +23,8 @@
         }
 
         getIndex() {
-            this.$http.get("api/energy").success((data: Domain.EnergyIndex) => {
-                this.$scope.dashboard.peekHourIndex = data.PeekHours;
-                this.$scope.dashboard.lowHourIndex = data.LowHours;
-
+            this.$http.get("api/energy").success((data: Domain.EnergyStat) => {
+                this.$scope.dashboard.stats = data;
             });
         }
     }

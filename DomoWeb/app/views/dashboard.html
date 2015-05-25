@@ -5,7 +5,7 @@
                 <div class="widget-icon green pull-left">
                     <i class="fa fa-moon-o"></i>
                 </div>
-                <div class="title">{{dashboard.lowHourIndex | number:0}}</div>
+                <div class="title">{{dashboard.stats.Current.LowHours | number:0}}</div>
                 <div class="comment">Index heure creuse</div>
             </rd-widget-body>
         </rd-widget>
@@ -16,7 +16,7 @@
                 <div class="widget-icon red pull-left">
                     <i class="fa fa-sun-o"></i>
                 </div>
-                <div class="title">{{dashboard.peekHourIndex | number:0}}</div>
+                <div class="title">{{dashboard.stats.Current.PeekHours | number:0}}</div>
                 <div class="comment">Index Heure pleine</div>
             </rd-widget-body>
         </rd-widget>

@@ -2,8 +2,7 @@
     "use strict";
 
     export class DashboardScope {
-        public peekHourIndex: number
-        public lowHourIndex: number
+        public stats: Domain.EnergyStat
         public refresh: number
     }
 }  

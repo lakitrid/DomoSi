@@ -1120,6 +1120,8 @@
     <TypeScriptCompile Include="app\controller\alertController.ts" />
     <TypeScriptCompile Include="app\controller\dashboardController.ts" />
     <TypeScriptCompile Include="app\controller\homeController.ts" />
+    <TypeScriptCompile Include="app\Domain\EnergyStatVals.ts" />
+    <TypeScriptCompile Include="app\Domain\EnergyStat.ts" />
     <TypeScriptCompile Include="app\Domain\EnergyIndex.ts" />
     <TypeScriptCompile Include="app\scope\Alert.ts" />
     <TypeScriptCompile Include="app\scope\AlertScope.ts" />
