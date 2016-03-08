@@ -59,5 +59,10 @@ namespace DomoHard.Data
         public int ApparentPower { get; set; }
 
         public bool HasExceed { get; set; }
+
+        public override string Serialize()
+        {
+            return string.Empty;
+        }
     }
 }

@@ -2,6 +2,8 @@
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -15,6 +17,7 @@ namespace DomoHardServ
     {
         private readonly string connectionString;
         private readonly string dbName;
+        private readonly string dataFolder;
 
         private MongoDatabase database;
         private MongoClient client;
@@ -27,11 +30,26 @@ namespace DomoHardServ
         /// <param name="dbName">database name</param>
         public SaveData(string connectionString, string dbName)
         {
+            string baseFolder = ConfigurationManager.AppSettings["DataFolder"];
+
+            this.dataFolder = Path.Combine(baseFolder, typeof(T).Name);
+
+            if (!Directory.Exists(this.dataFolder))
+            {
+                Directory.CreateDirectory(this.dataFolder);
+            }
+
             this.connectionString = connectionString;
             this.dbName = dbName;
-            this.client = new MongoClient(this.connectionString);
-            this.server = client.GetServer();
-            this.database = server.GetDatabase(this.dbName);
+            try
+            {
+                this.client = new MongoClient(this.connectionString);
+                this.server = client.GetServer();
+                this.database = server.GetDatabase(this.dbName);
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>
@@ -40,8 +58,22 @@ namespace DomoHardServ
         /// <param name="data">data to add</param>
         public void AddData(T data)
         {
-            var collection = database.GetCollection<T>(data.Type);
-            collection.Insert(data);
+            string currentFile = string.Format("{0}.dat", DateTime.Now.ToString("yyyyMMdd"));
+
+            using (StreamWriter writer = new StreamWriter(currentFile, true))
+            {
+                writer.WriteLine(data.Serialize());
+            }
+
+            try
+            {
+                var collection = database.GetCollection<T>(data.Type);
+                collection.Insert(data);
+            }
+            catch
+            {
+
+            }
         }
 
         /// <summary>

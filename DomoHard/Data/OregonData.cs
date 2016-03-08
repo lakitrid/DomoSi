@@ -31,5 +31,10 @@ namespace DomoHard.Data
 
             return true;
         }
+
+        public override string Serialize()
+        {
+            return string.Empty;
+        }
     }
 }
